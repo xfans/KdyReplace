@@ -1,1 +1,1 @@
-"# KdyReplace" 
+替换口袋阅首页的Kindle图标为任意应用程序
