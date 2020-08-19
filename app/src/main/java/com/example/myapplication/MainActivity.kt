@@ -20,13 +20,17 @@ class MainActivity : AppCompatActivity() {
             if (TextUtils.isEmpty(str)) {
                 Toast.makeText(this, "请输入包名!", Toast.LENGTH_LONG).show()
             } else {
-                sp.edit().putString("pkg", str).commit()
-                Toast.makeText(this, "成功!", Toast.LENGTH_LONG).show()
+                if ("com.amazon.kindlefc" == str) {
+                    Toast.makeText(this, "请不要设置该包名,com.amazon.kindlefc!", Toast.LENGTH_LONG).show()
+                } else {
+                    sp.edit().putString("pkg", str).commit()
+                    Toast.makeText(this, "成功!", Toast.LENGTH_LONG).show()
+                }
             }
         }
         val packageName = sp.getString("pkg", "")
         if (TextUtils.isEmpty(packageName)) {
-            tvTitle.text = "请输入应用包名,如:com.amazon.kindlefc"
+            tvTitle.text = "请输入应用包名,如:org.koreader.launcher"
         } else {
             val intent = packageManager.getLaunchIntentForPackage(packageName!!)
             startActivity(intent)
